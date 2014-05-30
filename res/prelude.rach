@@ -1,0 +1,83 @@
+
+-- Identity function
+id : a -> a
+id x = x
+
+-- Constant function
+const : a -> b -> a
+const x y = x
+
+-- Composition operator
+(.) : (b -> c) -> (a -> b) -> (a -> c)
+(.) f g = \x . f (g x)
+
+infixr . 9
+
+-- Application operator
+($) : a -> a
+($) = id
+
+infixr $ 0
+infixr `id` 0
+
+-- Boolean negation
+not : Bool -> Bool
+not x = if x false true
+
+-- Boolean equality
+boolEq : Bool -> Bool -> Bool
+boolEq x y = if x y $ not y
+
+(+) : Integer -> Integer -> Integer
+(+) = intPlus
+
+(+.) : Real -> Real -> Real
+(+.) = realPlus
+
+infixl + 6
+
+(*) : Integer -> Integer -> Integer
+(*) = intProd
+
+(*.) : Real -> Real -> Real
+(*.) = realProd
+
+infixl * 7
+infixl *. 7
+
+(/) : Integer -> Integer -> Integer
+(/) = intDiv
+
+infixl / 7
+
+(/.) : Real -> Real -> Real
+(/.) = realDiv
+
+infixl /. 7
+
+pi : Real
+pi = tau /. 2.0
+
+(=) : Integer -> Integer -> Bool
+(=) = intEq
+
+(=.) : Real -> Real -> Bool
+(=.) = realEq
+
+infixr = 4
+
+(-) : Integer -> Integer -> Integer
+(-) x y = x + intNeg y
+
+infixl <.> 5
+
+(<.>) : Sound -> Sound -> Sound
+(<.>) = soundSeq
+
+(<+>) : Sound -> Sound -> Sound
+(<+>) = soundAdd
+
+-- Constants
+
+patternLength : Real
+patternLength = 3.0
